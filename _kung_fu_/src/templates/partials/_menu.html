@@ -1,0 +1,12 @@
+<!-- BEGIN nav -->
+<nav class="nav js-nav--main">
+	<ul class="nav__list">
+		{% import "_data/_data.html" as mainMenu %}
+		{% for item in mainMenu.mainMenu %}
+		<li class="nav__item{% if title == item.title %} is-active{% endif %}">
+			<a href="{{ item.link | lower | replace(' ', '') }}" class="nav__link">{{ item.title }}</a>
+		</li>
+		{% endfor %}
+	</ul>
+</nav>
+<!-- END nav -->

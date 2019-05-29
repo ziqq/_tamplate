@@ -1,0 +1,37 @@
+{% macro icon(i, class) %}
+<svg class="icon icon-{{i}} {{class}}" role="img"><use xlink:href="files/sprite.svg#{{i}}"></use></svg>
+{% endmacro %}
+
+{% macro img(w, h, class) %}
+<img {% if class %}class="{{class}}"{% endif %} src="http://via.placeholder.com/{{w}}x{{h}}" alt="image-placeholder">
+{% endmacro %}
+
+{% macro btnIcon(text, class, icon) %}
+<button class="btn btn--icon btn--flat {{class}}">
+    <svg class="icon icon-{{icon}} ">
+        <use xlink:href="files/sprite.svg#{{icon}}"></use>
+    </svg>
+    {{ text }}
+</button>
+{% endmacro %}
+
+{% macro checkbox(title, class) %}
+<label class="c-checkbox {{ class }}">
+	<input type="checkbox">
+	<span class="c-checkbox__box"></span>
+	<span class="c-checkbox__title">{{ title }}</span>
+</label>
+{% endmacro %}
+{#  item.checkbox('мужской', 'c-checkbox--radio, profile-editor__checkbox')  #}
+
+{% macro picture(class, src, name, extend, desc, customClassBlock, customClassImg) %}
+<figure class="{{ class }}__item {% if customClassBlock %}{{ customClassBlock }}{% endif %}">
+    <picture>
+		<source media="(max-width: 480px )" srcset="{{ src }}{{ name }}@1.{{ extend }}">
+		<img
+			class="{{ class }}__img {% if customClassImg %}{{ customClassImg }}{% endif %}"
+			src="{{ src }}{{ name }}@2.{{ extend }}"/>
+    </picture>
+    {% if desc %}<figcaption class="{{ class }}__title">{{ desc }}</figcaption>{% endif %}
+</figure>
+{% endmacro %}

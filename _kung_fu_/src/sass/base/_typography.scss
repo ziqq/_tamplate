@@ -1,0 +1,167 @@
+b,
+strong {
+    font-family: $f-bold;
+    font-weight: 600;
+}
+
+a {
+    color: $color-main;
+    text-decoration: none;
+    outline: none;
+    @include tr;
+
+    &:hover {
+        color: lighten($color-main, 10%);
+    }
+
+    &.is-disable {
+        pointer-events: none;
+    }
+}
+
+h1,.h1,h2,.h2,h3,.h3,h4,.h4,h5,.h5,h6,.h6 {
+    margin-top: 0;
+}
+
+h1,.h1 {
+    font-family: $f-bold;
+    font-weight: 600;
+    font-size: 48px;
+    line-height: 1.05em;
+    @include max-screen(1024) {
+        font-size: 40px;
+        line-height: 1.125em;
+    }
+    @include respond-to(sm) {
+        font-size: 32px;
+    }
+}
+
+h2,.h2 {
+    font-family: $f-bold;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 1.4em;
+    @include max-screen(1024) {
+        font-size: 32px;
+        line-height: 1.25em;
+    }
+    @include respond-to(sm) {
+        font-size: 26px;
+        line-height: 1.2em;
+    }
+}
+
+h3,.h3 {
+    font-family: $f-medium;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 1.25em;
+    @include max-screen(1024) {
+        font-size: 24px;
+    }
+    @include respond-to(sm) {
+        font-size: 22px;
+        line-height: 1.13636364em;
+    }
+}
+
+h4,.h4,h5,.h5,h6,.h6 {
+    font-size: 18px;
+    font-family: $f-light;
+    font-weight: 300;
+    line-height: 1.22222222em;
+    margin-bottom: $half-indent;
+    @include respond-to(sm) {
+        line-height: 1.11111111em;
+    }
+}
+
+input,textarea,select {
+    @extend %styleInput;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    box-shadow: none;
+}
+
+textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 4px 10px;
+    font-size: 14px;
+    line-height: 1.25;
+
+    @include respond-to(xs) {
+        font-size: 16px;
+    }
+
+    &:focus {
+        font-size: 14px;
+    }
+
+    @include placeholder {
+        line-height: 1.25;
+    }
+}
+
+input[type='num'],
+input[type='number'],
+input[type='tel'],
+input[type='time'],
+input[type='date'] {
+    appearance: none;
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+}
+
+/*disable auto-zoom on iphone input field focus*/
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+    @include respond-to(xs) {
+
+        select:focus,
+        textarea:focus,
+        input:focus {
+            font-size: 16px;
+        }
+    }
+}
+
+.text {
+
+    &--small {
+        font-size: 13px;
+        line-height: 1.4;
+        font-weight: 300;
+        color: $color-text--light;
+    }//.text--small
+}//.text
+
+.text-color {
+    @each $theme, $color in $text-colors {
+
+        &--#{$theme} {
+            color: $color;
+        }
+    }
+
+    &--black {
+        color: #000;
+    }
+} //.text-color
+
+.text-light {
+    font-weight: 300;
+}//.text-light
+
+.text-center {
+    text-align: center;
+}//.text-center
+
+.text-small {
+    font-size: 14px;
+}

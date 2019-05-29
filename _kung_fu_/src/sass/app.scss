@@ -1,0 +1,27 @@
+@import 'helpers/all';
+@import 'generated/all';
+@import 'base/all';
+
+//Libs
+@import '../../node_modules/select2/dist/css/select2';
+@import '../../node_modules/nouislider/distribute/nouislider';
+@import '../../node_modules/swiper/dist/css/swiper.min';
+
+@import '_lib/bootstrap-modal';
+@import '_lib/slick-theme';
+@import '_lib/slick';
+
+//Main styles
+@import 'main';
+
+//Components
+@import 'components/buttons';
+
+//Layouts
+@import 'layout/header';
+@import 'layout/footer';
+@import 'layout/menu';
+@import 'layout/form';
+
+//Pages styles
+@import 'pages/home';

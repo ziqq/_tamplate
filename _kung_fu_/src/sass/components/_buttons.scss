@@ -1,0 +1,426 @@
+@keyframes spin {
+
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg) scale(1);
+    }
+
+    90% {
+        transform: translate(-50%, -50%) rotate(1080deg) scale(1);
+    }
+
+    100% {
+        transform: scale(0);
+    }
+}
+
+@keyframes success {
+
+    from {
+        transform: translate(-50%, -50%) rotate(-45deg) scale(0);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(0) scale(1);
+    }
+}
+
+@keyframes btsStatusAnimation {
+
+    from {
+        transform: translateY(150%);
+    }
+
+    to {
+        transform: translate(0);
+    }
+}
+
+@keyframes vibrate {
+
+    0%,
+    30%,
+    60%,
+    85%,
+    100% {
+        left: 0;
+        background-color: $color-danger;
+    }
+
+    10%,
+    40%,
+    90%,
+    70% {
+        left: -2px;
+        background-color: $color-danger;
+    }
+
+    20%,
+    50%,
+    80%,
+    95% {
+        left: 2px;
+        background-color: $color-danger;
+    }
+}
+
+@mixin resetBtn {
+    overflow: hidden;
+    border: 0;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+%button {
+    position: relative;
+    z-index: z(default);
+    display: inline-flex;
+    justify-content: center;
+    height: 45px;
+    padding: 0 35px;
+    transition: all 0.12s linear;
+    border: none;
+    border-radius: $border-radius * 2;
+    outline: none;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 44px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    @include nosel;
+
+    &.is-disabled {
+        transform: none;
+        border-color: transparent;
+        background-color: $color-accent;
+        box-shadow: none;
+        color: #a4adba;
+        cursor: not-allowed;
+
+        &:hover {
+            transform: none;
+            border-color: transparent;
+            background-color: $color-accent;
+            box-shadow: none;
+            color: #a4adba;
+        }
+    }
+} //base btn
+
+.btn {
+    @extend %button;
+
+    @each $theme, $color in $button-colors {
+
+        &-#{$theme} {
+            background-color: $color;
+            color: #fff;
+
+            &:hover {
+                background-color: darken($color, 3%);
+                color: #fff;
+            }
+
+            &:active {
+                background-color: darken($color, 7%);
+                box-shadow: none;
+                @include trfY(1px);
+            }
+        }
+    }
+
+    &--outline {
+        @each $theme, $color in $button-colors {
+
+            .btn-#{$theme} {
+                border: 1px solid $color;
+                background-color: transparent;
+                background-image: none;
+                box-shadow: none;
+                color: $color;
+
+                &:hover {
+                    background-color: $color;
+                    box-shadow: none;
+                    color: #fff;
+                    @include trfY(0);
+                }
+
+                &:active {
+                    background-color: darken($color, 5%);
+                    box-shadow: none;
+                    @include trfY(0);
+                }
+            }
+        }
+    } //.btn--outline
+
+    &--small {
+        height: 35px;
+        padding: 0 20px;
+        font-size: 14px;
+        line-height: 35px;
+    } //.btn--small
+
+    &--back {
+
+        &:hover {
+            text-decoration: none;
+
+            i {
+                @include trfX(-5px);
+            }
+        }
+
+        i {
+            @include tr;
+        }
+    } //.btn--back
+
+    &--icon {
+        min-width: 225px;
+        padding: 0;
+        min-height: 42px;
+        @include flexCenter;
+
+        .icon {
+            margin: auto 0 auto 10px;
+            fill: #fff;
+        }
+    } //.btn--icon
+
+    input[type='file'] {
+        display: none;
+    }
+} //.btn
+
+.btn-link {
+    display: inline-flex;
+    align-items: center;
+    padding: 0;
+    border: 0;
+    outline: none;
+    background-color: transparent;
+    box-shadow: none;
+    color: $color-accent;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: 1;
+    text-decoration: underline;
+    cursor: pointer;
+    @include trfY(0);
+
+    @each $theme, $color in $button-colors {
+
+        &-#{$theme} {
+            color: $color;
+            cursor: pointer;
+
+            &:hover {
+                color: darken($color, 7%);
+            }
+
+            &:active {
+                color: darken($color, 10%);
+            }
+        }
+    }
+
+    &:hover {
+        box-shadow: none;
+        text-decoration: none;
+        @include trfY(0);
+    }
+
+    i {
+        margin-top: -2px;
+        margin-right: 7px;
+        line-height: 1;
+    }
+
+    input[type='file'] {
+        display: none;
+    }
+
+    &--small {
+        font-size: 13px;
+        font-weight: 300;
+    } //.btn-link--small
+
+    &--back {
+        padding-left: 5px;
+        color: $color-text--light;
+        text-decoration: none;
+
+        &:hover {
+            color: $color-text--light;
+            text-decoration: none;
+
+            .icon {
+                left: -10px;
+            }
+        }
+
+        .icon {
+            position: relative;
+            left: -5px;
+            width: 15px;
+            height: 15px;
+            @include tr;
+        }
+    } //.btn-link--back
+} //.btn-link
+
+.btn-filter {
+    padding: 0 15px;
+    @include flexCenter;
+
+    @include xs-block() {
+        padding: 0 15px;
+    }
+
+    @include i5-block() {
+        padding: 0 10px;
+    }
+
+    .icon {
+        position: relative;
+        top: 3px;
+        width: 16px;
+        height: 16px;
+        margin-right: 8px;
+        fill: #fff;
+    }
+} //.btn-filter
+
+.btn-icon {
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    @include resetBtn;
+    @include flexCenter;
+
+    &:hover {
+
+        .icon {
+            fill: darken($gray--lighten, 15%);
+        }
+    }
+
+    .icon {
+        fill: $gray--lighten;
+        @include tr;
+    }
+
+    &.is-checked {
+
+        .icon-favorite {
+            transition: initial;
+            fill: $color-danger;
+        }
+    } //.btn-icon.is-checked
+} //.btn-icon
+
+.btn-animate {
+    min-width: 180px;
+    height: 42px;
+    padding: 0;
+    overflow: hidden;
+    line-height: 43px;
+    text-align: center;
+
+    @include xs-block() {
+        padding: 0;
+    }
+
+    &::before {
+        fill: #fff;
+    }
+
+    &:not(.is-ready) {
+
+        &.is-error,
+        &.is-success {
+
+            &::before {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 20px;
+                height: 20px;
+                margin-top: -10px;
+                margin-left: -11px;
+                animation: btsStatusAnimation ease-in 0.3s forwards;
+                background-repeat: no-repeat;
+                background-position: center;
+                fill: #fff;
+                color: #fff;
+                text-align: center;
+            }
+
+            span {
+                @include trfY(-150%);
+            }
+        }
+
+        &.is-success {
+
+            &::before {
+                content: '';
+                background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2aWV3Qm94PSIwIDAgNzguMzY5IDc4LjM2OSIgPjxwYXRoIGQ9Ik03OC4wNDksMTkuMDE1TDI5LjQ1OCw2Ny42MDZjLTAuNDI4LDAuNDI4LTEuMTIxLDAuNDI4LTEuNTQ4LDBMMC4zMiw0MC4wMTVjLTAuNDI3LTAuNDI2LTAuNDI3LTEuMTE5LDAtMS41NDdsNi43MDQtNi43MDQgICBjMC40MjgtMC40MjcsMS4xMjEtMC40MjcsMS41NDgsMGwyMC4xMTMsMjAuMTEybDQxLjExMy00MS4xMTNjMC40MjktMC40MjcsMS4xMi0wLjQyNywxLjU0OCwwbDYuNzAzLDYuNzA0ICAgQzc4LjQ3NywxNy44OTQsNzguNDc3LDE4LjU4Niw3OC4wNDksMTkuMDE1eiIgZmlsbD0iI0ZGRkZGRiIvPjwvc3ZnPg==');
+            }
+        }
+
+        &.is-error {
+            background-color: $color-danger;
+
+            &::before {
+                content: '';
+                width: 25px;
+                height: 25px;
+                margin-top: -13px;
+                background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2aWV3Qm94PSIwIDAgNDg2LjQ2MyA0ODYuNDYzIiA+PHBhdGggZD0iTTI0My4yMjUsMzMzLjM4MmMtMTMuNiwwLTI1LDExLjQtMjUsMjVzMTEuNCwyNSwyNSwyNWMxMy4xLDAsMjUtMTEuNCwyNC40LTI0LjQgICAgQzI2OC4yMjUsMzQ0LjY4MiwyNTYuOTI1LDMzMy4zODIsMjQzLjIyNSwzMzMuMzgyeiIgZmlsbD0iI0ZGRkZGRiIvPjxwYXRoIGQ9Ik00NzQuNjI1LDQyMS45ODJjMTUuNy0yNy4xLDE1LjgtNTkuNCwwLjItODYuNGwtMTU2LjYtMjcxLjJjLTE1LjUtMjcuMy00My41LTQzLjUtNzQuOS00My41cy01OS40LDE2LjMtNzQuOSw0My40ICAgIGwtMTU2LjgsMjcxLjVjLTE1LjYsMjcuMy0xNS41LDU5LjgsMC4zLDg2LjljMTUuNiwyNi44LDQzLjUsNDIuOSw3NC43LDQyLjloMzEyLjggICAgQzQzMC43MjUsNDY1LjU4Miw0NTguODI1LDQ0OS4yODIsNDc0LjYyNSw0MjEuOTgyeiBNNDQwLjYyNSw0MDIuMzgyYy04LjcsMTUtMjQuMSwyMy45LTQxLjMsMjMuOWgtMzEyLjggICAgYy0xNywwLTMyLjMtOC43LTQwLjgtMjMuNGMtOC42LTE0LjktOC43LTMyLjctMC4xLTQ3LjdsMTU2LjgtMjcxLjRjOC41LTE0LjksMjMuNy0yMy43LDQwLjktMjMuN2MxNy4xLDAsMzIuNCw4LjksNDAuOSwyMy44ICAgIGwxNTYuNywyNzEuNEM0NDkuMzI1LDM2OS44ODIsNDQ5LjIyNSwzODcuNDgyLDQ0MC42MjUsNDAyLjM4MnoiIGZpbGw9IiNGRkZGRkYiLz48cGF0aCBkPSJNMjM3LjAyNSwxNTcuODgyYy0xMS45LDMuNC0xOS4zLDE0LjItMTkuMywyNy4zYzAuNiw3LjksMS4xLDE1LjksMS43LDIzLjhjMS43LDMwLjEsMy40LDU5LjYsNS4xLDg5LjcgICAgYzAuNiwxMC4yLDguNSwxNy42LDE4LjcsMTcuNmMxMC4yLDAsMTguMi03LjksMTguNy0xOC4yYzAtNi4yLDAtMTEuOSwwLjYtMTguMmMxLjEtMTkuMywyLjMtMzguNiwzLjQtNTcuOSAgICBjMC42LTEyLjUsMS43LTI1LDIuMy0zNy41YzAtNC41LTAuNi04LjUtMi4zLTEyLjVDMjYwLjgyNSwxNjAuNzgyLDI0OC45MjUsMTU1LjA4MiwyMzcuMDI1LDE1Ny44ODJ6IiBmaWxsPSIjRkZGRkZGIi8+PC9zdmc+');
+            }
+        }
+
+        span {
+            display: none;
+        }
+    }
+
+    &.is-animate {
+
+        &::before {
+            content: '';
+            display: block;
+            background-color: transparent;
+            background-image: url('../files/assets/loader-3.gif');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: contain;
+            @include coverdiv;
+        }
+
+        span {
+            display: none;
+        }
+    }
+
+    &.is-invalid {
+        overflow: hidden;
+    }
+} //.btn-animate
+
+.btn-box {
+
+    &--column {
+        @include flexColumn;
+    } //.btn-box--column
+
+    &--center {
+        justify-content: center;
+        @include flexCenter;
+    } //.btn-box--center
+} //.btn-box

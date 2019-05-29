@@ -1,0 +1,38 @@
+{% import "assets/_mixins.html" as mixin %}
+{% import "components/form/_components.html" as form %}
+<!doctype html>
+<html>
+<head>
+	{% include "assets/_meta-tags.html" %}
+	{% include "assets/_favicons.html" %}
+	<link rel="stylesheet" media="all" href="css/app.css">
+</head>
+<body
+	class="loading"
+	itemscope="itemscope"
+	itemtype="http://schema.org/WebPage"
+>
+
+	<!-- BEGIN wrapper -->
+	<div class="wrapper {{ wrapperClass }}">
+		<div class="wrapper__inner">
+			{% include "partials/_header.html" %}
+			{% block content %}{% endblock %}
+			{% include "partials/_footer.html" %}
+		</div>
+	</div>
+	<!-- END wrapper -->
+
+	<div class="preloader js-preloader"></div>
+	<div class="overlay js-overlay"></div>
+	<div class="go-top js-go-top"></div>
+
+	{% include "partials/_popup.html" %}
+
+	<!-- BEGIN scripts -->
+	<script type="text/javascript" src="js/libs.min.js"></script>
+	{% block scripts %}{% endblock %}
+	<script type="text/javascript" src="js/app.js"></script>
+	<!-- END scripts -->
+</body>
+</html>

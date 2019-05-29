@@ -1,0 +1,59 @@
+{% import "assets/_mixins.html" as mixin %}
+
+{% macro input(title, pl, icon, type='text', class, inputClass, val, attr) %}
+<div class="c-input {{ class }}">
+	{% if title %}<span class="c-input__title">{{ title }}</span>{% endif %}
+	<input
+		class="c-input__input {{ inputClass }} {% if type == 'tel' %}js-phone-mask{% endif %}"
+		type="{{ type | escape }}"
+		{% if pl %} placeholder="{{ pl }}" {% endif %}
+		{% if val %} value="{{ val }}" {% endif %}
+		{% if attr %}{{ attr }}{% endif %}>
+
+	{% if icon %}
+	<svg class="icon icon-{{ icon }}">
+		<use xlink:href="files/sprite.svg#{{ icon }}"></use>
+	</svg>
+	{% endif %}
+
+	{% if type == "password" %}
+	<span class="c-input__icon js-c-input-password--show">
+		{{ mixin.icon('eye') }}
+	</span>
+	<span class="c-input__icon fal js-c-input-password--hide" style="display: none;">
+		{{ mixin.icon('eye--blocked') }}
+	</span>
+	{% endif %}
+	{% include "./_Tip.html" %}
+</div>
+{% endmacro %}
+{# form.input(title, pl, icon, type='text', class, inputClass) #}
+
+{% macro checkbox(title, class) %}
+<label class="c-checkbox {{ class }}">
+	<input type="checkbox">
+	<span class="c-checkbox__box"></span>
+	{% if title %}<span class="c-checkbox__title">{{ title }}</span>{% endif %}
+</label>
+{% endmacro %}
+{# form.checkbox('title', 'class') #}
+
+{% macro radio(title, subtitle, name, class) %}
+<label class="c-checkbox c-checkbox--radio {{ class }}">
+	<input name="{{ name }}" type="radio">
+	<span class="c-checkbox__box"></span>
+	{% if title %}<span class="c-checkbox__title">{{ title }}</span>{% endif %}
+	{% if subtitle %}<div class="c-checkbox__subtitle">{{ subtitle }}</div>{% endif %}
+</label>
+{% endmacro %}
+{# form.radio('title', 'name', 'class') #}
+
+{% macro inputTooltip(text, class) %}
+<!-- begin tip -->
+<div class="c-input-tip js-c-input-tip {{ class }}">
+	<span class="c-input-tip__arrow-up"></span>
+	<i class="fal fa-times"></i>
+	<p class="c-input-tip__text">{{ text }}</p>
+</div><!-- end tip -->
+{% endmacro %}
+{# form.inputTooltip('text') #}
