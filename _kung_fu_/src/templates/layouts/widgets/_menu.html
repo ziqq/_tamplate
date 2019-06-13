@@ -1,0 +1,15 @@
+<!-- BEGIN menu -->
+<nav class="menu js-menu">
+	<button class="menu__close btn-icon js-menu-btn--close md-only">
+		{{ mixin.icon('close') }}
+	</button>
+	<ul class="menu__list">
+		{% import "_data/_data.html" as mainMenu %}
+		{% for item in mainMenu.mainMenu %}
+		<li class="menu__item{% if title == item.title %} is-active{% endif %} {% if item.isHidden %} md-only{% endif %}">
+			<a href="{{ item.link | lower | replace(' ', '') }}" class="menu__link">{{ item.title }}</a>
+		</li>
+		{% endfor %}
+	</ul>
+</nav>
+<!-- END menu -->

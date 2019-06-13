@@ -3,14 +3,14 @@
 
     &::before,
     &::after {
-        text-transform: none;
+        position: absolute;
+        opacity: 0;
+        display: none;
         font-size: 13px;
         line-height: 1;
-        user-select: none;
+        text-transform: none;
         pointer-events: none;
-        position: absolute;
-        display: none;
-        opacity: 0;
+        user-select: none;
 
         @include respond-to(sm) {
             display: none !important;
@@ -19,31 +19,30 @@
 
     &::before {
         content: '';
-        border: 5px solid transparent;
         z-index: 1000;
+        border: 5px solid transparent;
     }
 
     &::after {
         content: attr(tooltip);
+        z-index: 1000;
+        min-width: 3em;
+        max-width: 21em;
+        padding: 1ch 1.5ch 1.2ch;
+        overflow: hidden;
+        border-radius: $border-radius;
+        background: #333;
+        box-shadow: 0 1em 2em -8px rgba(0, 0, 0, 0.35);
+        color: #fff;
         font-family: $f-light;
         font-size: 13px;
         line-height: 1;
         text-align: center;
-        min-width: 3em;
-        max-width: 21em;
-        white-space: nowrap;
-        overflow: hidden;
         text-overflow: ellipsis;
-        padding: 1ch 1.5ch 1.2ch;
-        border-radius: $border-radius;
-        box-shadow: 0 1em 2em -8px rgba(0, 0, 0, 0.35);
-        background: #333;
-        color: #fff;
-        z-index: 1000;
+        white-space: nowrap;
     }
 
     &:hover {
-
         &::before,
         &::after {
             display: block;
@@ -63,7 +62,6 @@
     }
 
     &:not([flow]) {
-
         &::before,
         &::after {
             left: 50%;
@@ -71,8 +69,14 @@
         }
     }
 
-    &[flow^='up'] {
+    &:not([flow]):hover {
+        &::before,
+        &::after {
+            animation: tooltips-vert 300ms ease-out forwards;
+        }
+    }
 
+    &[flow^='up'] {
         &::before,
         &::after {
             left: 50%;
@@ -81,7 +85,6 @@
     }
 
     &[flow^='down'] {
-
         &::before {
             top: 100%;
             border-top-width: 0;
@@ -100,13 +103,12 @@
     }
 
     &[flow^='left'] {
-
         &::before {
             top: 50%;
-            border-right-width: 0;
-            border-left-color: #333;
             left: calc(0em - 5px);
             transform: translate(-0.5em, -50%);
+            border-right-width: 0;
+            border-left-color: #333;
         }
 
         &::after {
@@ -117,13 +119,12 @@
     }
 
     &[flow^='right'] {
-
         &::before {
             top: 50%;
-            border-left-width: 0;
-            border-right-color: #333;
             right: calc(0em - 5px);
             transform: translate(0.5em, -50%);
+            border-left-width: 0;
+            border-right-color: #333;
         }
 
         &::after {
@@ -133,16 +134,7 @@
         }
     }
 
-    &:not([flow]):hover {
-
-        &::before,
-        &::after {
-            animation: tooltips-vert 300ms ease-out forwards;
-        }
-    }
-
     &[flow^='up']:hover {
-
         &::before,
         &::after {
             animation: tooltips-vert 300ms ease-out forwards;
@@ -150,7 +142,6 @@
     }
 
     &[flow^='down']:hover {
-
         &::before,
         &::after {
             animation: tooltips-vert 300ms ease-out forwards;
@@ -158,7 +149,6 @@
     }
 
     &[flow^='left']:hover {
-
         &::before,
         &::after {
             animation: tooltips-horz 300ms ease-out forwards;
@@ -166,7 +156,6 @@
     }
 
     &[flow^='right']:hover {
-
         &::before,
         &::after {
             animation: tooltips-horz 300ms ease-out forwards;
@@ -175,7 +164,6 @@
 }
 
 [tooltip=''] {
-
     &::before,
     &::after {
         display: none !important;
@@ -183,7 +171,6 @@
 }
 
 @keyframes tooltips-vert {
-
     to {
         opacity: 0.9;
         transform: translate(-50%, 0);
@@ -191,7 +178,6 @@
 }
 
 @keyframes tooltips-horz {
-
     to {
         opacity: 0.9;
         transform: translate(0, -50%);

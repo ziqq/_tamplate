@@ -1,0 +1,36 @@
+{% import "_data/data-product.html" as productItem %}
+{% for product in productItem.productSimilar %}
+<!-- BEGIN product-item -->
+<a
+	href="card.html"
+	class="product-item"
+	itemscope
+	itemtype="http://schema.org/Product"
+>
+
+	<div
+		class="product-item__img"
+		itemprop="image"
+		href="images/productName/{{ product.img }}.png"
+	>
+		<img src="images/productName/{{ product.img }}.png"  alt="{{ product.title }}" />
+	</div>
+
+	<h3 class="product-item__title js-product-title-equalheight">{{ product.title }}</h3>
+
+	<div class="product-item__bottom">
+		{% if product.price %}
+		<div
+			class="product-item__price"
+			itemprop="offers"
+			itemscope
+			itemtype="http://schema.org/Offer"
+		>
+			<meta itemprop="price" content="{{ product.price }}">
+			<meta itemprop="priceCurrency" content="RUB">
+			<span>{{ product.price }}</span>
+		</div>
+		{% endif %}
+	</div>
+</a><!-- END product-item -->
+{% endfor %}

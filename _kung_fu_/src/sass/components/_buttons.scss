@@ -1,5 +1,4 @@
 @keyframes spin {
-
     0% {
         transform: translate(-50%, -50%) rotate(0deg) scale(1);
     }
@@ -14,7 +13,6 @@
 }
 
 @keyframes success {
-
     from {
         transform: translate(-50%, -50%) rotate(-45deg) scale(0);
     }
@@ -25,7 +23,6 @@
 }
 
 @keyframes btsStatusAnimation {
-
     from {
         transform: translateY(150%);
     }
@@ -33,42 +30,6 @@
     to {
         transform: translate(0);
     }
-}
-
-@keyframes vibrate {
-
-    0%,
-    30%,
-    60%,
-    85%,
-    100% {
-        left: 0;
-        background-color: $color-danger;
-    }
-
-    10%,
-    40%,
-    90%,
-    70% {
-        left: -2px;
-        background-color: $color-danger;
-    }
-
-    20%,
-    50%,
-    80%,
-    95% {
-        left: 2px;
-        background-color: $color-danger;
-    }
-}
-
-@mixin resetBtn {
-    overflow: hidden;
-    border: 0;
-    outline: none;
-    background-color: transparent;
-    cursor: pointer;
 }
 
 %button {
@@ -113,7 +74,6 @@
     @extend %button;
 
     @each $theme, $color in $button-colors {
-
         &-#{$theme} {
             background-color: $color;
             color: #fff;
@@ -126,14 +86,13 @@
             &:active {
                 background-color: darken($color, 7%);
                 box-shadow: none;
-                @include trfY(1px);
+                @include tY(1px);
             }
         }
     }
 
     &--outline {
         @each $theme, $color in $button-colors {
-
             .btn-#{$theme} {
                 border: 1px solid $color;
                 background-color: transparent;
@@ -145,51 +104,17 @@
                     background-color: $color;
                     box-shadow: none;
                     color: #fff;
-                    @include trfY(0);
+                    @include tY(0);
                 }
 
                 &:active {
                     background-color: darken($color, 5%);
                     box-shadow: none;
-                    @include trfY(0);
+                    @include tY(0);
                 }
             }
         }
     } //.btn--outline
-
-    &--small {
-        height: 35px;
-        padding: 0 20px;
-        font-size: 14px;
-        line-height: 35px;
-    } //.btn--small
-
-    &--back {
-
-        &:hover {
-            text-decoration: none;
-
-            i {
-                @include trfX(-5px);
-            }
-        }
-
-        i {
-            @include tr;
-        }
-    } //.btn--back
-
-    &--icon {
-        min-width: 225px;
-        padding: 0;
-        min-height: 42px;
-        @include flexCenter;
-
-        .icon {
-            margin: auto 0 auto 10px;
-            fill: #fff;
-        }
-    } //.btn--icon
 
     input[type='file'] {
         display: none;
@@ -210,10 +135,9 @@
     line-height: 1;
     text-decoration: underline;
     cursor: pointer;
-    @include trfY(0);
+    @include tY(0);
 
     @each $theme, $color in $button-colors {
-
         &-#{$theme} {
             color: $color;
             cursor: pointer;
@@ -231,13 +155,7 @@
     &:hover {
         box-shadow: none;
         text-decoration: none;
-        @include trfY(0);
-    }
-
-    i {
-        margin-top: -2px;
-        margin-right: 7px;
-        line-height: 1;
+        @include tY(0);
     }
 
     input[type='file'] {
@@ -271,6 +189,11 @@
             @include tr;
         }
     } //.btn-link--back
+
+    &--light {
+        color: $gray--light;
+        font-weight: 400;
+    } //.btn-link--light
 } //.btn-link
 
 .btn-filter {
@@ -299,11 +222,9 @@
     justify-content: center;
     width: 40px;
     height: 40px;
-    @include resetBtn;
     @include flexCenter;
 
     &:hover {
-
         .icon {
             fill: darken($gray--lighten, 15%);
         }
@@ -315,7 +236,6 @@
     }
 
     &.is-checked {
-
         .icon-favorite {
             transition: initial;
             fill: $color-danger;
@@ -340,10 +260,8 @@
     }
 
     &:not(.is-ready) {
-
         &.is-error,
         &.is-success {
-
             &::before {
                 position: absolute;
                 top: 50%;
@@ -361,12 +279,11 @@
             }
 
             span {
-                @include trfY(-150%);
+                @include tY(-150%);
             }
         }
 
         &.is-success {
-
             &::before {
                 content: '';
                 background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2aWV3Qm94PSIwIDAgNzguMzY5IDc4LjM2OSIgPjxwYXRoIGQ9Ik03OC4wNDksMTkuMDE1TDI5LjQ1OCw2Ny42MDZjLTAuNDI4LDAuNDI4LTEuMTIxLDAuNDI4LTEuNTQ4LDBMMC4zMiw0MC4wMTVjLTAuNDI3LTAuNDI2LTAuNDI3LTEuMTE5LDAtMS41NDdsNi43MDQtNi43MDQgICBjMC40MjgtMC40MjcsMS4xMjEtMC40MjcsMS41NDgsMGwyMC4xMTMsMjAuMTEybDQxLjExMy00MS4xMTNjMC40MjktMC40MjcsMS4xMi0wLjQyNywxLjU0OCwwbDYuNzAzLDYuNzA0ICAgQzc4LjQ3NywxNy44OTQsNzguNDc3LDE4LjU4Niw3OC4wNDksMTkuMDE1eiIgZmlsbD0iI0ZGRkZGRiIvPjwvc3ZnPg==');
@@ -391,7 +308,6 @@
     }
 
     &.is-animate {
-
         &::before {
             content: '';
             display: block;
@@ -414,7 +330,6 @@
 } //.btn-animate
 
 .btn-box {
-
     &--column {
         @include flexColumn;
     } //.btn-box--column

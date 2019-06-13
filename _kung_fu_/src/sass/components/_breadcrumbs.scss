@@ -1,55 +1,50 @@
 .breadcrumbs {
-    padding: 12px 0 14px;
-
-    @include respond-to(xs) {
-        display: none;
-    }
+    padding: 15px 0;
 
     &__list {
         display: flex;
-    } //breadcrumbs__list
+    } //.breadcrumbs__list
 
     &__item {
         position: relative;
 
-        &::after {
-            content: '\f105';
-            @include fa('light');
-            font-size: 14px;
-            color: #000;
-            position: relative;
-            right: -8px;
-            top: 1px;
-        }
-
         &:last-child {
-
-            &::after {
-                display: none;
-            }
+            @include nosel;
 
             .breadcrumbs__title {
-                color: #000;
+                color: $color-text--light;
+                // font-weight: 500;
             }
         }
 
         & + & {
-            margin-left: 20px;
+            margin-left: 25px;
         }
-    } //breadcrumbs__item
+    } //.breadcrumbs__item
 
     &__link {
-        display: inline-block;
-        color: $color-main;
-
         &:hover {
-            text-decoration: underline;
+            .breadcrumbs__title {
+                color: $color-text--light;
+            }
         }
-    } //breadcrumbs__link
+    } //.breadcrumbs__link
 
     &__title {
-        font-family: $f-light;
-        font-size: 14px;
-        color: $color-main;
-    } //breadcrumbs__title
-} //breadcrumbs
+        color: $color-text--lighten;
+        font-size: 15px;
+        font-weight: 400;
+    } //.breadcrumbs__title
+
+    &__icon {
+        right: -17px;
+        width: 9px;
+        height: 9px;
+        @include centre('y');
+
+        svg {
+            position: relative;
+            top: -7px;
+        }
+    } //.breadcrumbs__icon
+} //.breadcrumbs

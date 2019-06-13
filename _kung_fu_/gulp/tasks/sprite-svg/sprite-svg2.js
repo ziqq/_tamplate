@@ -16,7 +16,7 @@ gulp.task('sprite:svg', function() {
             .src(config.src.iconsSvg + '/*.svg')
             .pipe(
                 plumber({
-                    errorHandler: config.errorHandler
+                    errorHandler: config.errorHandler,
                 })
             )
             // .pipe(changed(config.dest.iconsSvg + '/'))
@@ -24,19 +24,19 @@ gulp.task('sprite:svg', function() {
             .pipe(
                 svgmin({
                     js2svg: {
-                        pretty: true
+                        pretty: true,
                     },
                     plugins: [
                         {
-                            removeDesc: true
+                            removeDesc: true,
                         },
                         {
-                            cleanupIDs: true
+                            cleanupIDs: true,
                         },
                         {
-                            mergePaths: false
-                        }
-                    ]
+                            mergePaths: false,
+                        },
+                    ],
                 })
             )
             .pipe(
@@ -46,10 +46,10 @@ gulp.task('sprite:svg', function() {
                             dest: config.src.none,
                             sprite: 'sprite.svg',
                             example: {
-                                dest: 'symbols.html'
-                            }
-                        }
-                    }
+                                dest: 'symbols.html',
+                            },
+                        },
+                    },
                 })
             )
             .pipe(gulp.dest(config.src.files + '/'))

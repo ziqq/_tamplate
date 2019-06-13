@@ -6,32 +6,104 @@
 <img {% if class %}class="{{class}}"{% endif %} src="http://via.placeholder.com/{{w}}x{{h}}" alt="image-placeholder">
 {% endmacro %}
 
-{% macro btnIcon(text, class, icon) %}
-<button class="btn btn--icon btn--flat {{class}}">
-    <svg class="icon icon-{{icon}} ">
+{% macro btn(title, class) %}
+<button class="btn {{ class }}">
+	{{ title }}
+</button>
+{% endmacro %}
+{# item.btn(title='', class='') #}
+
+{% macro btnLink(title, class, href="javascript:void(0)") %}
+<a class="btn-link {{ class }}" href="{{ href }}">{{ title }}</a>
+{% endmacro %}
+{#  item.btnLink(title='', class='', href='#')  #}
+
+{% macro btnIcon(icon, class, text) %}
+<button class="btn-icon {{class}}">
+    <svg class="icon icon-{{icon}} btn-icon__icon">
         <use xlink:href="files/sprite.svg#{{icon}}"></use>
     </svg>
     {{ text }}
 </button>
 {% endmacro %}
 
-{% macro checkbox(title, class) %}
+{% macro btnAnimate(title, class, messageStatus='success', messageSuccess='Все прошло удачно!', messageError='Неправильный пароль или e-mail') %}
+<button
+	class="btn btn-animate is-ready {{ class }}"
+	data-push
+	data-push-delay="2500"
+	data-push-message-error="{{ messageError }}"
+	data-push-message-success="{{ messageSuccess }}"
+	data-push-status="{{ messageStatus | escape }}"
+>
+	<span class="btn__title">{{ title }}</span>
+	{% if title %}<span class="btn__title">{{ title }}</span>{% endif %}
+</button>
+{% endmacro %}
+{#  item.btnAnimate(title='', class='')  #}
+
+{% macro checkbox(title, subtitle, class) %}
 <label class="c-checkbox {{ class }}">
 	<input type="checkbox">
 	<span class="c-checkbox__box"></span>
-	<span class="c-checkbox__title">{{ title }}</span>
+	{% if title %}<span class="c-checkbox__title">{{ title }}</span>{% endif %}
+	{% if subtitle %}<div class="c-checkbox__subtitle">{{ subtitle }}</div>{% endif %}
 </label>
 {% endmacro %}
-{#  item.checkbox('мужской', 'c-checkbox--radio, profile-editor__checkbox')  #}
+{# form.checkbox('title', 'class') #}
 
-{% macro picture(class, src, name, extend, desc, customClassBlock, customClassImg) %}
-<figure class="{{ class }}__item {% if customClassBlock %}{{ customClassBlock }}{% endif %}">
-    <picture>
-		<source media="(max-width: 480px )" srcset="{{ src }}{{ name }}@1.{{ extend }}">
-		<img
-			class="{{ class }}__img {% if customClassImg %}{{ customClassImg }}{% endif %}"
-			src="{{ src }}{{ name }}@2.{{ extend }}"/>
-    </picture>
-    {% if desc %}<figcaption class="{{ class }}__title">{{ desc }}</figcaption>{% endif %}
-</figure>
+{% macro radio(title, subtitle, name, class) %}
+<label class="c-checkbox c-checkbox--radio {{ class }}">
+	<input name="{{ name }}" type="radio">
+	<span class="c-checkbox__box"></span>
+	{% if title %}<span class="c-checkbox__title">{{ title }}</span>{% endif %}
+	{% if subtitle %}<div class="c-checkbox__subtitle">{{ subtitle }}</div>{% endif %}
+</label>
 {% endmacro %}
+{# form.radio('title', 'name', 'class') #}
+
+{% macro input(title, pl, icon, type='text', class, inputClass, val, attr) %}
+<div class="c-input {{ class }}">
+	{% if title %}<span class="c-input__title">{{ title }}</span>{% endif %}
+	<input
+		class="c-input__input {{ inputClass }} {% if type == 'tel' %}js-phone-mask{% endif %}"
+		type="{{ type | escape }}"
+		{% if pl %} placeholder="{{ pl }}" {% endif %}
+		{% if val %} value="{{ val }}" {% endif %}
+		{% if attr %}{{ attr }}{% endif %}>
+
+	{% if icon %}
+	<svg class="icon icon-{{ icon }}">
+		<use xlink:href="files/sprite.svg#{{ icon }}"></use>
+	</svg>
+	{% endif %}
+
+	{% if type == "password" %}
+	<span class="c-input__icon js-c-input-password--show">
+		{{ mixin.icon('eye') }}
+	</span>
+	<span class="c-input__icon fal js-c-input-password--hide" style="display: none;">
+		{{ mixin.icon('eye--blocked') }}
+	</span>
+	{% endif %}
+	{% include "./_Tip.html" %}
+</div>
+{% endmacro %}
+{# form.input(title='', pl='', icon='', type='text', class='', inputClass='') #}
+
+{% macro textarea(title, pl, class, inputClass, attr) %}
+<div class="c-textarea {{class}}">
+	{% if title %}<span class="c-textarea__title">{{ title }}</span>{% endif %}
+	<textarea
+		class="c-textarea__field {{inputClass}}"
+		{% if pl %} placeholder="{{ pl }}" {% endif %}
+		{% if attr %}{{ attr }}{% endif %}
+	>
+	</textarea>
+	<!-- begin tip -->
+	<div class="c-input-tip js-c-input-tip ">
+		<div class="c-input-tip__text">Введите комментарий</div>
+	</div><!-- begin tip -->
+</div>
+{% endmacro %}
+{# form.textarea(class='', type='text', inputClass='') #}

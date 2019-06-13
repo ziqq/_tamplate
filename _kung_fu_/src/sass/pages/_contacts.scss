@@ -1,1 +1,17 @@
-.cantacts {}//.contacts
+.contacts {
+} //.contacts
+
+.contacts-item {
+} //.contacts-item
+
+.map-box {
+    position: relative;
+    margin-bottom: 40px;
+    overflow: hidden;
+    border-radius: $border-radius;
+    min-height: 280px;
+
+    &__inner {
+        @include coverdiv;
+    } //.map-box__inner
+} //.map-box

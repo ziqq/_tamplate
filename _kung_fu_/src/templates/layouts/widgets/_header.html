@@ -1,0 +1,31 @@
+<!-- BEGIN header -->
+<header
+	class="header {{headerClass}}"
+	itemscope
+	itemtype="http://schema.org/WPHeader"
+>
+	<div class="container">
+		<div class="header__inner">
+			<!-- begin hamburger -->
+			<button class="hamburger header__hamburger js-nav-btn--open md-only--flex btn-icon">
+				{{mixin.icon('hamburger', 'hamburger__icon')}}
+			</button>
+			<!-- end hamburger -->
+
+			<!-- begin logo -->
+			<div
+				class="logo header__logo"
+				itemscope
+				itemprop="logo"
+				itemtype="http://schema.org/Organization"
+			>
+				<a class="logo__link" href="/" itemprop="url">
+					<img class="logo__img" src="files/assets/logo--white.svg" alt="{{ siteName }}">
+				</a>
+			</div>
+			<!-- end logo -->
+
+			{% include "./_menu.html" %}
+		</div>
+	</div>
+</header><!-- END header -->

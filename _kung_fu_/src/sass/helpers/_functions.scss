@@ -10,7 +10,7 @@
 
 @mixin respond-to($breakpoint) {
     @if map-has-key($breakpoints, $breakpoint) {
-        @media (max-width: #{map-get($breakpoints, $breakpoint)}) {
+        @media screen and (max-width: #{map-get($breakpoints, $breakpoint)}) {
             @content;
         }
     } @else {
@@ -21,17 +21,11 @@
 
 @mixin respond-min($breakpoint) {
     @if map-has-key($breakpointsMin, $breakpoint) {
-        @media (min-width: #{map-get($breakpointsMin, $breakpoint)}) {
+        @media screen and (min-width: #{map-get($breakpointsMin, $breakpoint)}) {
             @content;
         }
     } @else {
         @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
             + "Please make sure it is defined in `$breakpoints` map.";
-    }
-}
-
-@mixin landscape() {
-    @media only screen and (min-device-width: 320px) and (max-device-width: 812px) and (orientation: landscape) {
-        @content;
     }
 }

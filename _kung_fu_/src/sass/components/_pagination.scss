@@ -1,21 +1,20 @@
 .pagination {
-    @include flexCenter;
     justify-content: center;
+    @include flexCenter;
 
     &__list {
         @include flexCenter;
     } //.pagination__list
 
     &__item {
-        @include flexCenter;
         margin: 0 3px;
         text-align: center;
+        @include flexCenter;
 
         &.is-active {
-
             .pagination__link {
-                color: #fff;
                 background-color: $color-main;
+                color: #fff;
 
                 &:hover {
                     color: $color-main;
@@ -25,15 +24,20 @@
     } //.pagination__item
 
     &__link {
-        @include flexCenter;
         justify-content: center;
         width: 32px;
         height: 32px;
         margin: auto;
-        font-size: 14px;
-        color: $gray--light;
         border: 1px solid transparent;
         border-radius: $border-radius;
+        color: $gray--light;
+        font-size: 14px;
+        @include flexCenter;
+
+        &:hover {
+            border-color: $color-border--light;
+            color: $color-main;
+        }
 
         .fa,
         .fab,
@@ -42,11 +46,6 @@
         .fas {
             font-size: 20px;
             line-height: 1;
-        }
-
-        &:hover {
-            border-color: $color-border--light;
-            color: $color-main;
         }
     } //.pagination__link
 

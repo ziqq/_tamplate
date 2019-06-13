@@ -1,8 +1,97 @@
 {% set
 mainMenu = [
 	{
-		title: 'Маникюр',
-		direction: 'left'
+		title: 'Главная',
+		link: 'home.html',
+		isHidden: true
+	}
+	,{
+		title: 'Каталог',
+		link: 'catalog.html'
+	}
+	,{
+		title: 'Где купить',
+		link: 'buy.html'
+	}
+	,{
+		title: 'О компании',
+		link: 'about.html'
+	}
+	,{
+		title: 'Партнерам',
+		link: 'partners.html'
 	}
 ]
+%}
+
+{% set
+	socialList = [
+		{
+			title: 'Мы в Vkontakte',
+			icon: 'vk',
+			class: 'vk'
+		}
+		,{
+			title: 'Мы в Facebook',
+			icon: 'facebook',
+			class: 'facebook'
+		}
+		,{
+			title: 'Мы в Instagram',
+			icon: 'instagram---outline',
+			class: 'instagram'
+		}
+		,{
+			title: 'Мы в Youtube',
+			icon: 'youtube--outline',
+			class: 'youtube'
+		}
+	]
+%}
+
+{% set
+    footerItem = [
+        {
+            title: 'Title 1',
+            link: [
+                    {
+                        title: 'subtitle 1'
+                    },
+                    {
+                        title: 'subtitle 2'
+                    },
+                    {
+                        title: 'subtitle 3'
+                    }
+                ]
+        },
+        {
+            title: 'Title 2',
+            link: [
+					{
+						title: 'subtitle 1'
+					},
+					{
+						title: 'subtitle 2'
+					},
+					{
+						title: 'subtitle 3'
+					}
+                ]
+        },
+        {
+            title: 'Title 3',
+            link: [
+					{
+						title: 'subtitle 1'
+					},
+					{
+						title: 'subtitle 2'
+					},
+					{
+						title: 'subtitle 3'
+					}
+                ]
+        }
+    ]
 %}

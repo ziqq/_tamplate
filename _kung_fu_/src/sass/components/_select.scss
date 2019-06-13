@@ -1,65 +1,37 @@
 .c-select {
     position: relative;
     padding: 0;
+    border: 2px solid $color-main;
+    border-radius: $border-radius * 2;
+    background-color: $color-main;
+    color: $gray--darken;
+    cursor: pointer;
 
     &::before {
-        content: '\f107';
-        @include fa('light');
-        font-size: 18px;
-        color: $color-icon;
-        @include vy;
+        content: '';
         right: 10px;
-    }
+        z-index: z(fixed);
+        display: block;
+        @include centre;
 
-    @include respond-to(i5) {
-        width: 132px;
+        @include arr(12, 8, $gray--darken, b);
     }
 
     &__reset {
-        @include respond-to(xs) {
+        @include xs-block() {
+            right: -3px;
+            z-index: z(dropdown);
+            justify-content: flex-end;
             width: 30px;
             padding: 11px 0;
             @include flexCenter;
-            justify-content: flex-end;
             @include centre('y');
-            right: -3px;
-            z-index: z(dropdown);
 
             i {
                 font-size: 18px;
             }
         }
     } //.c-select__reset
-
-    select {
-        @extend %styleInput;
-        padding: 11px 25px 10px 10px;
-        width: 100%;
-        // height: 100%;
-        font-family: $f;
-        font-size: 16px;
-        color: $gray--darkest;
-        appearance: none;
-
-        &:focus {
-            border-color: $color-border--lighten;
-            box-shadow: none;
-        }
-
-        &.has-placeholder {
-            font-family: $f-light-i;
-            color: #999;
-
-            option {
-                font-family: $f;
-                color: $color-text;
-            }
-        }
-    } //.c-select select
-
-    option {
-        padding: 0 10px;
-    } //.c-select option
 
     &__icon {
         width: 24px;
@@ -74,35 +46,60 @@
         pointer-events: none;
     } //.c-select__ico
 
+    select {
+        width: 100%;
+        padding: 9px 25px 10px 10px;
+        transform: none;
+        color: $color-text;
+        font-size: 16px;
+        line-height: initial;
+        cursor: pointer;
+        appearance: none;
+        @extend %styleInput;
+
+        &.has-placeholder {
+            color: #999;
+            font-style: italic;
+            font-weight: 300;
+
+            option {
+                color: $color-text;
+            }
+        }
+    } //.c-select select
+
+    option {
+        padding: 0 10px;
+    } //.c-select option
+
     &--icon {
+        position: relative;
         display: none;
+        align-items: center;
         max-width: 90px;
         height: 40px;
-        line-height: 40px;
         background-color: #fff;
-        position: relative;
-        align-items: center;
+        line-height: 40px;
 
         &::before {
             display: none;
         }
 
         .c-select {
-
             &__icon {
-                @include centre();
                 z-index: z(fixed);
+                @include centre();
             }
         }
 
         select {
-            max-width: 90px;
+            position: relative;
+            z-index: z(fixed) + 1;
             width: auto;
+            max-width: 90px;
             height: 0;
             padding: 38px 0 0;
             background-color: transparent;
-            position: relative;
-            z-index: z(fixed) + 1;
 
             &:hover,
             &:focus {

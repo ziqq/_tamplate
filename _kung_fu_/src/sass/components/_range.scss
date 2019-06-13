@@ -1,16 +1,15 @@
-//noUiSlider
-
 .noUi-horizontal {
     height: 2px;
 
     .noUi-handle {
+        top: -3px;
+        left: -3px;
         width: 8px;
         height: 8px;
-        top: -3px;
-        left: -5px;
         border-radius: 50%;
-        background: $color-main;
-        @include respond-to(xs) {
+        background: $color-accent;
+
+        @include xs-block() {
             width: 10px;
             height: 10px;
         }
@@ -19,25 +18,25 @@
 
 .noUi-base,
 .noUi-handle {
-    background-color: $gray--lighten;
+    background-color: $color-main;
 }
 
 .noUi-handle {
+    position: relative;
     border: none;
     border-radius: 0;
-    box-shadow: none;
-    position: relative;
-    cursor: pointer;
     outline: none;
+    box-shadow: none;
+    cursor: pointer;
 
     &::after {
         width: 24px;
         height: 24px;
         border-radius: 50%;
-        background-color: rgba($color-main, 0.5);
+        background-color: rgba($color-accent, 0.35);
         @include vcenter;
         @include tr(0.5s);
-        @include respond-to(xs) {
+        @include xs-block() {
             width: 28px;
             height: 28px;
         }
@@ -50,43 +49,61 @@
 
 .noUi-connect,
 .noUi-target {
-    background: $color-main;
     border: none;
     border-radius: 0;
+    background: $color-accent;
     box-shadow: none;
 }
 
 .range {
-    @include clr;
-
     &__slider {
-        margin-top: 5px;
-        margin-bottom: 15px;
+        width: 90%;
+        margin: 5px auto 20px;
     } //.range__slider
+
+    &__diapazon {
+        @include row-flex;
+    } //.range__diapazon
 
     &__from,
     &__to {
-        display: inline-block;
-        vertical-align: middle;
-        font-size: 15px;
-        color: $color-text--light;
+        position: relative;
+        @include col;
+        @include size(6);
+        @include flexCenter;
 
         span {
-            font-size: 14px;
             color: $color-text;
+            font-size: 13px;
         }
 
         i {
-            font-size: 13px;
             color: $gray--light;
+            font-size: 13px;
+        }
+
+        input {
+            width: 100%;
+            font-weight: 600;
+            @extend %styleInput;
         }
     } //.range__from
 
-    &__from {
-        float: left;
-    }
-
     &__to {
-        float: right;
+        &::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -15px;
+            display: block;
+            width: 8px;
+            height: 1px;
+            background-color: $color-bg;
+        }
     } //.range__to
+
+    &__icon {
+        right: 11px;
+        @include centre('y');
+    }
 } //.range

@@ -14,10 +14,10 @@ var reload = browserSync.reload;
 
 gulp.task('js', function() {
     return gulp
-        .src(config.src.js + '/app.js')
+        .src([config.src.js + '/*.js', '!' + config.src.js + '/*.libs.js'])
         .pipe(
             plumber({
-                errorHandler: config.errorHandler
+                errorHandler: config.errorHandler,
             })
         )
         .pipe(include())
@@ -30,12 +30,11 @@ gulp.task('js', function() {
 
 gulp.task('js:libs', function() {
     return gulp
-        .src(config.src.js + '/libs.js')
-        .pipe(include())
+        .src(config.src.js + '/*libs.js')
         .on('error', function() {
             notify('Javascript include error');
         })
-        .pipe(rename({ suffix: '.min', prefix: '' }))
+        .pipe(include())
         .pipe(uglify())
         .pipe(gulp.dest(config.dest.js + '/'))
         .pipe(reload({ stream: true }));
@@ -63,9 +62,9 @@ gulp.task('js:watch', function() {
             config.src.js + '/**/*.js',
             '!' + config.src.js + '/libs.js',
             '!' + config.src.js + '/_lib',
-            '!' + config.src.js + '/assets'
+            '!' + config.src.js + '/assets',
         ],
         ['js']
     );
-    gulp.watch([config.src.js + '/libs.js'], ['js:libs']);
+    gulp.watch([config.src.js + '/*libs.js'], ['js:libs']);
 });

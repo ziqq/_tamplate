@@ -1,10 +1,38 @@
-ProjectTitle: Project Name
+ProjectTitle: KANSCRAFT
 
 PageList:
 - file: home.html
   ready: 50
   desc : Главная
 
-- file: popups.html
+- file: catalog.html
+  ready: 50
+  desc : Каталог
+
+- file: card.html
+  ready: 50
+  desc : Подробная карточа
+
+- file: cart.html
+  ready: 50
+  desc : Корзина
+
+- file: contacts.html
+  ready: 50
+  desc : Контакты
+
+- file: about.html
+  ready: 50
+  desc : О компании
+
+- file: privacy.html
+  ready: 50
+  desc : Политики обработки персональных данных
+
+- file: 404.html
+  ready: 50
+  desc : Error Page
+
+- file: modals.html
   ready: 50
   desc : Попап окна

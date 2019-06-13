@@ -3,25 +3,27 @@
 @import 'base/all';
 
 //Libs
-@import '../../node_modules/select2/dist/css/select2';
 @import '../../node_modules/nouislider/distribute/nouislider';
 @import '../../node_modules/swiper/dist/css/swiper.min';
-
 @import '_lib/bootstrap-modal';
-@import '_lib/slick-theme';
-@import '_lib/slick';
+// @import '_lib/slick-theme';
+// @import '_lib/slick';
 
-//Main styles
-@import 'main';
+//Customization libs
+@import 'custom';
 
-//Components
+//Import site components
 @import 'components/buttons';
 
-//Layouts
-@import 'layout/header';
-@import 'layout/footer';
-@import 'layout/menu';
-@import 'layout/form';
+//Import main styles
+@import 'main';
 
-//Pages styles
+//Import site layouts
+@import 'layout/footer';
+@import 'layout/form';
+@import 'layout/header';
+@import 'layout/menu';
+@import 'layout/popup';
+
+//Import pages
 @import 'pages/home';

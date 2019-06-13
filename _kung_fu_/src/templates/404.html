@@ -1,0 +1,38 @@
+---
+title: Страница не найдена
+firstscreenSelectClass: sm-hide
+---
+{% extends "layouts/_default.html" %}
+
+{% block content %}
+
+<!-- begin home -->
+<div class="content-wrapper error">
+
+	<div class="container">
+
+		<div class="error__wrap">
+			<div class="error__left">
+				<div class="error__content">
+					<div class="error__img">
+						<img src="img/general/404.png" alt="404">
+					</div>
+					<a class="btn btn-accent btn--gr error__btn sm-omly mb-30" href="home.html">На главную</a>
+					<div class="error__text">
+						<p>Страница которую вы ищите не найдена.</p>
+						<p>Скорее всего вы попали на битую ссылку или опечатались при воде URL.</p>
+						<p class="sm-hide">Проверьте правильность Url или <a href="home.html">вернитесь на главную</a></p>
+					</div>
+				</div>
+			</div>
+			<div class="error__right">
+				<h1 class="error__title">404</h1>
+			</div>
+		</div>
+
+	</div>
+
+</div>
+<!-- end home -->
+
+{% endblock %}

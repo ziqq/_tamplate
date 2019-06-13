@@ -1,145 +1,146 @@
-.bb-accordeon {
+.c-accordeon {
     @include nosel;
 
     &__item {
         @extend %box;
-
-        & + .bb-accordeon__item {
-            margin-top: 10px;
-        }
         @include respond-to(xs) {
             box-shadow: none;
         }
 
+        & + .c-accordeon__item {
+            margin-top: 10px;
+        }
+
         &.is-open {
-
-            .bb-accordeon {
-
+            .c-accordeon {
                 &__title {
-
                     &:hover {
                         box-shadow: none;
                     }
 
-                    &::before {
-                        content: '\f106';
+                    .icon {
+                        transform: translateY(-50%) rotate(90deg);
                     }
-                }
+                } //.c-accordeon__item.is-open .c-accordeon__title
             }
-        }
-    } //.bb-accordeon__item
+        } //.c-accordeon__item.is-open
+    } //.c-accordeon__item
 
     &__title {
-        display: block;
-        padding: 18px 20px;
-        font-family: $f-medium;
-        font-size: 15px;
-        color: #000;
-        border-radius: $border-radius;
-        cursor: pointer;
         position: relative;
+        display: block;
+        margin: 0;
+        padding: 18px 30px 18px 20px;
+        border-radius: $border-radius;
+        color: $color-text;
+        font-size: 15px;
+        font-weight: 500;
+        cursor: pointer;
 
-        &::before {
-            margin-right: 15px;
-            content: '\f107';
-            @include fa('regular');
-            font-size: 20px;
-            color: $color-main;
-            @include centre('y');
-            right: 1px;
+        @include xs-block() {
+            padding: 18px 30px 18px 10px;
         }
 
-        &:hover {
-            box-shadow: $bxs-hover;
-        }
-        @include respond-to(sm) {
-
+        @include sm-block() {
             &:hover {
                 box-shadow: none;
             }
         }
 
+        &:hover {
+            box-shadow: $bxs-hover;
+        } //.c-accordeon__title:hover
+
+        .icon {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            width: 10px;
+            height: 10px;
+            transform: translateY(-50%) rotate(-90deg);
+        } //.c-accordeon__title .icon
+
         &-count {
-            font-family: $f-light;
-            font-size: 14px;
             color: $gray--light;
-        }//.bb-accordeon__title-count
+            font-size: 14px;
+            font-weight: 300;
+        } //.c-accordeon__title-count
 
-        .bb-checkbox {
-
+        .c-checkbox {
             &__box {
                 top: -1px;
             }
-        } //.bb-accordeon__title .bb-checkbox
-    } //.bb-accordeon__title
+        } //.c-accordeon__title .c-checkbox
+    } //.c-accordeon__title
+
+    &__content {
+        padding: 0 20px 18px;
+
+        @include xs-block() {
+            padding: 0 10px 18px;
+        }
+    } //.c-accordeon__content
 
     &--other {
-
-        .bb-accordeon {
-
+        .c-accordeon {
             &__item {
-
                 &.is-open {
-
-                    .bb-accordeon__title {
-
+                    .c-accordeon__title {
                         &::before {
                             content: '';
                             transform: rotate(90deg);
                         }
 
                         &::after {
-                            transform: rotate(90deg);
                             opacity: 0;
+                            transform: rotate(90deg);
                         }
                     }
                 }
             }
 
             &__title {
-                padding: 15px 50px 15px 15px;
                 margin: 0;
+                padding: 15px 50px 15px 15px;
 
                 &::after {
                     content: '';
-                    display: block;
                     position: absolute;
                     top: 50%;
                     right: 20px;
+                    display: block;
                     width: 11px;
                     height: 1px;
-                    background-color: $color-main;
                     transform-origin: 50% 50%;
+                    background-color: $color-main;
                     will-change: transform;
                     @include tr;
                 }
 
                 &::before {
                     content: '';
-                    display: block;
                     position: absolute;
                     top: 50%;
-                    margin-top: 0.5px;
                     right: 10px;
+                    display: block;
                     width: 1px;
                     height: 11px;
-                    background-color: $color-main;
+                    margin-top: 0.5px;
                     transform-origin: 50% 50%;
+                    background-color: $color-main;
                     will-change: transform;
                     @include tr;
                 }
-            }//.bb-accordeon--other .bb-accordeon__title
+            } //.c-accordeon--other .c-accordeon__title
 
             &__content {
                 width: 100%;
             }
         }
-    } //.bb-accordeon--other
+    } //.c-accordeon--other
 
     &--mobile {
-
-        .bb-accordeon {
-
+        .c-accordeon {
             &__item {
                 border-bottom: 1px solid $color-border--lightest;
 
@@ -147,7 +148,7 @@
                     border-top: 1px solid $color-border--lightest;
                 }
 
-                & + .bb-accordeon__item {
+                & + .c-accordeon__item {
                     margin-top: 0;
                 }
             }
@@ -157,14 +158,14 @@
                 width: 100%;
                 font-family: $f;
 
-                &::before {
-                    @include fa('light');
-                    margin-right: 0;
-                    color: $gray--light;
-                    @include vy;
-                    left: auto;
-                    right: 20px;
-                }
+                // &::before {
+                //     @include fa('light');
+                //     margin-right: 0;
+                //     color: $gray--light;
+                //     @include centre;
+                //     left: auto;
+                //     right: 20px;
+                // }
             }
 
             &__content {
@@ -176,12 +177,10 @@
                 }
             }
         }
-    } //.bb-accordeon--mobile
+    } //.c-accordeon--mobile
 
     &--dark {
-
-        .bb-accordeon {
-
+        .c-accordeon {
             &__item {
                 background-color: $gray--darken;
             }
@@ -194,12 +193,10 @@
                 }
             }
         }
-    } //.bb-accordeon--dark
+    } //.c-accordeon--dark
 
     &--light {
-
-        .bb-accordeon {
-
+        .c-accordeon {
             &__item {
                 box-shadow: none;
             }
@@ -207,16 +204,16 @@
             &__title {
                 box-shadow: none;
 
-                &::before {
-                    margin-right: 0;
-                    @include centre('y');
-                    right: 20px;
-                }
+                // &::before {
+                //     margin-right: 0;
+                //     @include centre('y');
+                //     right: 20px;
+                // }
 
                 &:hover {
                     box-shadow: none;
                 }
             }
         }
-    } //.bb-accordeon--light
-} //.bb-accordeon
+    } //.c-accordeon--light
+} //.c-accordeon

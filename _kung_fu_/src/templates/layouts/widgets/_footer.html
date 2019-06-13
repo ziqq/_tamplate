@@ -1,0 +1,29 @@
+<!-- BEGIN footer -->
+<footer
+	class="footer"
+	itemscope="itemscope"
+	itemtype="http://schema.org/WPFooter"
+>
+	<div class="container">
+		<div class="row mb-30">
+			{% for item in data.footerItem %}
+			<div class="col-4">
+				<div class="footer-item" data-accordeon-item{% if item.isOpen %}="open" {% endif %}>
+					<h4 class="h4 footer-item__title" data-accordeon-title>{{ item.title }}</h4>
+					<div class="footer-item__content" data-accordeon-content>
+						<ul class="footer-item__list">
+							{% for itemCategory in item.link %}
+							<li class="footer-item__el">
+								<a href="{% if itemCategory.link %}{{ itemCategory.link }}{% else %}#{% endif %}" class="footer-item__link">{{ itemCategory.title }}</a>
+							</li>
+							{% endfor %}
+						</ul>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+		<p class="copyright footer__copyright"><span>2015 - 2019</span> © {{ siteName | upper }} — изделия из кожи ручной работы</p>
+	</div>
+</footer>
+<!-- END footer -->

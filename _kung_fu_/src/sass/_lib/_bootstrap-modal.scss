@@ -13,8 +13,8 @@
 }
 
 .fade-scale {
-    transform: scale(0);
     opacity: 0;
+    transform: scale(0);
     transition: all 0.25s linear;
 
     &.in {
@@ -32,14 +32,12 @@
 }
 
 tr {
-
     &.collapse.show {
         display: table-row;
     }
 }
 
 tbody {
-
     &.collapse.show {
         display: table-row-group;
     }
@@ -69,8 +67,8 @@ tbody {
     z-index: z(modal);
     display: none;
     overflow: hidden;
-    @include nosel;
     outline: 0;
+    @include nosel;
 
     .modal-open & {
         overflow-x: hidden;
@@ -79,14 +77,14 @@ tbody {
 }
 
 .modal-dialog {
+    position: relative;
     width: auto;
     margin: $base-indent;
     pointer-events: none;
-    position: relative;
 
     .modal.fade & {
-        transition: transform 0.3s ease-out;
         transform: translate(0, -25%);
+        transition: transform 0.3s ease-out;
     }
 
     .modal.show & {
@@ -105,12 +103,12 @@ tbody {
     display: flex;
     flex-direction: column;
     width: 100%;
+    border-radius: $modal-border-radius;
+    outline: 0;
+    background-color: $modal-content-bg;
+    box-shadow: $modal-box-shadow;
     pointer-events: auto;
     background-clip: padding-box;
-    background-color: $modal-content-bg;
-    border-radius: $modal-border-radius;
-    box-shadow: $modal-box-shadow;
-    outline: 0;
 }
 
 // Modal background
@@ -138,21 +136,20 @@ tbody {
 // Modal header
 
 .modal-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
     padding: $modal-header-padding;
     border-bottom: $modal-border-width solid $modal-border-color;
     border-top-left-radius: $modal-border-radius;
     border-top-right-radius: $modal-border-radius;
-
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
 }
 
 // Title text within header
 
 .modal-title {
     margin-bottom: 0;
-    line-height: $line-height-base;
+    line-height: $base-line-height;
 }
 
 // Modal body
@@ -166,12 +163,11 @@ tbody {
 // Footer
 
 .modal-footer {
-    padding: $modal-inner-padding;
-    border-top: $modal-border-width solid $modal-border-color;
-
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    padding: $modal-inner-padding;
+    border-top: $modal-border-width solid $modal-border-color;
 
     // Easily place margin between footer elements
 
@@ -196,7 +192,6 @@ tbody {
 
 // Scale up the modal
 @include respond-to(sm) {
-
     .modal-dialog {
         max-width: $modal-md;
         margin: $base-indent 10px;
@@ -216,7 +211,6 @@ tbody {
 }
 
 @include respond-to(lg) {
-
     .modal-lg {
         max-width: $modal-lg;
     }

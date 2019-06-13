@@ -139,9 +139,9 @@ mark {
 
 sub,
 sup {
+    position: relative;
     font-size: 75%;
     line-height: 0;
-    position: relative;
     vertical-align: baseline;
 }
 
@@ -233,9 +233,9 @@ input,
 optgroup,
 select,
 textarea {
+    margin: 0; /* 3 */
     color: inherit; /* 1 */
     font: inherit; /* 2 */
-    margin: 0; /* 3 */
 }
 
 /**
@@ -270,8 +270,8 @@ button,
 html input[type="button"], /* 1 */
 input[type="reset"],
 input[type="submit"] {
-    -webkit-appearance: button; /* 2 */
     cursor: pointer; /* 3 */
+    -webkit-appearance: button; /* 2 */
 }
 
 /**
@@ -289,8 +289,8 @@ html input[disabled] {
 
 button::-moz-focus-inner,
 input::-moz-focus-inner {
-    border: none;
     padding: 0;
+    border: none;
 }
 
 /**
@@ -357,8 +357,8 @@ input[type='search']::-webkit-search-decoration {
  */
 
 legend {
-    border: none; /* 1 */
     padding: 0; /* 2 */
+    border: none; /* 1 */
 }
 
 /**
@@ -386,8 +386,8 @@ optgroup {
  */
 
 table {
-    border-collapse: collapse;
     border-spacing: 0;
+    border-collapse: collapse;
 }
 
 td,
@@ -415,8 +415,8 @@ html {
 }
 
 *,
-*:before,
-*:after {
+*::before,
+*::after {
     box-sizing: inherit;
 }
 
@@ -452,23 +452,23 @@ p,
 ul,
 ol,
 li {
-    list-style: none;
     margin: 0;
     padding: 0;
+    list-style: none;
 }
 
 %textnowrap {
-    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .noselect,
 %noselect {
-    -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    -webkit-touch-callout: none;
 }

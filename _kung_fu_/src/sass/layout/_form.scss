@@ -1,1 +1,61 @@
-.form {}//.form
+.form {
+    position: relative;
+    overflow: hidden;
+
+    &.is-success {
+        .form__success {
+            @include tY(0);
+        }
+    } //.form.is-success
+} //.form
+
+.form-success {
+    z-index: z(fixed);
+    transition: all 500ms cubic-bezier(0.645, 0.045, 0.355, 1);
+    background-color: #fff;
+    text-align: center;
+    @include coverdiv;
+    @include tY(-1000%);
+    @include flexColumn;
+
+    &__inner {
+        align-items: center;
+        align-items: flex-start;
+        margin: auto;
+        @include flexColumn;
+    } //.form-success__inner
+
+    &__row {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin: auto;
+        padding: 35px 0 50px;
+
+        .c-checkbox {
+            flex: 1 1 50%;
+            margin: 0 10px;
+        }
+    } //.form-success__row
+
+    &__title {
+        margin-bottom: 20px;
+        font-size: 26px;
+        font-weight: 500;
+        line-height: 1.2;
+        text-align: left;
+    } //.form-success__title
+
+    &__subtitle {
+        margin-bottom: 10px;
+        color: $color-text--light;
+        text-align: left;
+    } //.form-success__subtitle
+
+    &__icon {
+        width: 50px;
+        height: 50px;
+        margin: 0 auto 30px;
+        fill: $color-success;
+    } //.form-success__icon
+} //.form-success

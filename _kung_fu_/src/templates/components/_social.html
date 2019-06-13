@@ -1,8 +1,14 @@
 <!-- begin social -->
 <div class="social">
 	<ul class="social__list">
-		<li class="social__item social__item_instagram"><a href="#" class="social__link"></a></li>
-		<li class="social__item social__item_vk"><a href="#" class="social__link"></a></li>
-		<li class="social__item social__item_fb"><a href="#" class="social__link"></a></li>
+		{% for social in data.socialList %}
+			<li class="social__item social__item--{{ social.class }}">
+				<a href="#" class="social__link">
+					<svg class="icon icon-{{ social.icon }}" role="img">
+						<use xlink:href="files/sprite.svg#{{ social.icon }}"></use>
+					</svg>
+				</a>
+			</li>
+		{% endfor %}
 	</ul>
 </div><!-- end social -->

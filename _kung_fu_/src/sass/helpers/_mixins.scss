@@ -56,42 +56,12 @@
     height: 100%;
 }
 
-// vertical-align at center
-@mixin vcenter {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-// vertical-align at Y
-@mixin vy {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-// vertical-align at X
-@mixin vx {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
 //transform: translateY
-@mixin trfY($num) {
-    transform: translateY($num);
-}
-
-//transform: translateX
-@mixin trfX($num) {
-    transform: translateX($num);
-}
-
 @mixin tY($var) {
     transform: translateY($var);
 }
 
+//transform: translateX
 @mixin tX($var) {
     transform: translateX($var);
 }
@@ -162,9 +132,14 @@
 }
 
 //Scroll
-@mixin scroll {
-    overflow-y: auto;
+@mixin scroll($axis: 'y') {
     -webkit-overflow-scrolling: touch;
+    @if $axis == 'y' {
+        overflow-y: auto;
+    }
+    @if $axis == 'x' {
+        overflow-x: auto;
+    }
 }
 
 //Scroll Bar

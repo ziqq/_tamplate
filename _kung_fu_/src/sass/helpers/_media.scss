@@ -82,8 +82,8 @@ $units: 1px !default;
     @media only screen and (-webkit-min-device-pixel-ratio: $ratio),
         only screen and (min--moz-device-pixel-ratio: $ratio),
         only screen and (-o-min-device-pixel-ratio: #{$ratio}/1),
-    only screen and (min-resolution: #{round($ratio*96)}dpi),
-    only screen and (min-resolution: #{$ratio}dppx) {
+        only screen and (min-resolution: #{round($ratio*96)}dpi),
+        only screen and (min-resolution: #{$ratio}dppx) {
         @content;
     }
 }
@@ -200,6 +200,12 @@ $units: 1px !default;
 
 @mixin ipad-retina-landscape {
     @media screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape) {
+        @content;
+    }
+}
+
+@mixin landscape() {
+    @media only screen and (min-device-width: 320px) and (max-device-width: 812px) and (orientation: landscape) {
         @content;
     }
 }

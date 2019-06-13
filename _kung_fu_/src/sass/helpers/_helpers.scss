@@ -1,3 +1,15 @@
+@mixin customScroll {
+    @include scrollbar {
+        width: 4px;
+    }
+    @include scrollbar-track {
+        width: 4px;
+    }
+    @include scrollbar-thumb {
+        background-color: $gray--lighten;
+    }
+}
+
 @mixin container {
     width: 100%;
     max-width: 1200px;
@@ -44,6 +56,38 @@
     justify-content: center;
 }
 
+@mixin dropdownResponseWidth {
+    @include respond-to(xs) {
+        width: 427px;
+        max-width: 427px;
+    }
+    @include respond-to(i8) {
+        width: 416px;
+    }
+    @include respond-to(i7) {
+        width: 377px;
+    }
+    @include respond-to(i5) {
+        width: 322px;
+    }
+}
+
+@mixin responseWidth {
+    @include respond-to(xs) {
+        width: calc(425px - 20px);
+        max-width: 425px;
+    }
+    @include respond-to(i8) {
+        width: calc(414px - 20px);
+    }
+    @include respond-to(i7) {
+        width: calc(375px - 20px);
+    }
+    @include respond-to(i5) {
+        width: calc(320px - 20px);
+    }
+}
+
 @mixin sectionOverlay($opa: 0.7) {
     position: relative;
 
@@ -64,18 +108,20 @@
     }
 }
 
-@mixin borderTop {
-    border-top: 1px solid $color-border--lightest;
-
-    &:first-child {
-        border-top: none;
+@mixin border($direction, $color: $color-border) {
+    @if $direction == 'top' {
+        border-top: 1px solid $color;
     }
-}
-
-@mixin border($direction, $color: $gray--lightest) {
-    @if $direction {
-        border-#{$direction}: 1px solid $color;
-    } @else {
+    @if $direction == 'left' {
+        border-left: 1px solid $color;
+    }
+    @if $direction == 'right' {
+        border-right: 1px solid $color;
+    }
+    @if $direction == 'bottom' {
+        border-bottom: 1px solid $color;
+    }
+    @if $direction == 'all' {
         border: 1px solid $color;
     }
 }
@@ -108,11 +154,22 @@
     border-width: 0 2px 2px 0;
 }
 
-@mixin itemGutter($g: $gutter) {
-    margin-bottom: $g;
+@mixin itemOffset($offset: 10px) {
+    & > :not(:first-child) {
+        margin-left: $offset;
 
-    &:last-child {
-        margin-bottom: 0;
+        @include xs-block() {
+            margin-top: $offset;
+            margin-left: 0;
+        }
+    }
+
+    & > :not(:last-child) {
+        margin-right: $offset;
+
+        @include xs-block() {
+            margin-right: 0;
+        }
     }
 }
 
@@ -148,6 +205,7 @@
 %styleInput {
     height: 40px;
     padding: 9px 25px 9px 10px;
+    transform: translateZ(0);
     transition: border 0.3s ease;
     border: 1px solid $input-color-border;
     border-radius: $border-radius;
@@ -155,7 +213,6 @@
     color: $gray--darkest;
     font-size: 16px;
     line-height: 1;
-    transform: translateZ(0);
     // -webkit-text-fill-color: $gray--darkest;
 
     @include placeholder {
@@ -182,24 +239,5 @@
     &:disabled {
         border-color: $gray--lighten !important;
         background-color: $gray--lighten !important;
-    }
-}
-
-@mixin itemOffset($offset: 10px) {
-    & > :not(:first-child) {
-        margin-left: $offset;
-
-        @include xs-block() {
-            margin-top: $offset;
-            margin-left: 0;
-        }
-    }
-
-    & > :not(:last-child) {
-        margin-right: $offset;
-
-        @include xs-block() {
-            margin-right: 0;
-        }
     }
 }
