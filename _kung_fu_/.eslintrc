@@ -1,11 +1,17 @@
 {
     "extends": ["prettier"],
     "parserOptions": {
-        "ecmaVersion": 2017
+        "sourceType": "module",
+        "ecmaVersion": 6,
+        "ecmaFeatures": {
+            "jsx": true
+        }
     },
 
     "env": {
-        "es6": true
+        "es6": true,
+        "node": true,
+        "browser": true
     },
     "rules": {
         "jsx-quotes": [

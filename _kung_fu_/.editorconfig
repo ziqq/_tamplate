@@ -10,5 +10,9 @@ insert_final_newline = true
 max_line_length = 88
 charset = utf-8
 
+[*.sass]
+indent_style = tab
+indent_size = 4
+
 [{*.html, *.nj, *.pug, *.sss}]
 indent_style = tab

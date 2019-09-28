@@ -17,7 +17,6 @@
         "declaration-block-trailing-semicolon": "always",
         "declaration-colon-space-after": "always",
 
-        "property-no-vendor-prefix": true,
         "value-no-vendor-prefix": true,
         "at-rule-no-vendor-prefix": true,
         "selector-no-vendor-prefix": true,
@@ -98,7 +97,7 @@
             "min-width",
             "max-width",
             "height",
-            "max-height",
+            "min-height",
             "max-height",
             "margin",
             "margin-top",
@@ -258,19 +257,71 @@
             "declarations",
             {
                 "type": "at-rule",
+                "name": "extend"
+            },
+            {
+                "type": "at-rule",
+                "name": "include"
+            },
+            {
+                "type": "rule",
+                "selector": "^&::"
+            },
+            {
+                "type": "rule",
+                "selector": "^&:hover"
+            },
+            {
+                "type": "at-rule",
+                "name": "supports"
+            },
+            {
+                "type": "at-rule",
                 "name": "media"
             },
             {
                 "type": "at-rule",
-                "selector": "^-block()"
+                "selector": "lg-block()"
             },
             {
-                "type": "rule",
-                "selector": "^&::(before|after)"
+                "type": "at-rule",
+                "selector": "mdX-block()"
+            },
+            {
+                "type": "at-rule",
+                "selector": "md-block()"
+            },
+            {
+                "type": "at-rule",
+                "selector": "sm-block()"
+            },
+            {
+                "type": "at-rule",
+                "selector": "xs-block()"
+            },
+            {
+                "type": "at-rule",
+                "selector": "i8-block()"
+            },
+            {
+                "type": "at-rule",
+                "selector": "i7-block()"
+            },
+            {
+                "type": "at-rule",
+                "selector": "i5-block()"
             },
             {
                 "type": "rule",
                 "selector": "^&:\\w"
+            },
+            {
+                "type": "rule",
+                "selector": "^& \\+ &"
+            },
+            {
+                "type": "rule",
+                "selector": "^&_"
             },
             {
                 "type": "rule",
@@ -279,6 +330,10 @@
             {
                 "type": "rule",
                 "selector": "^."
+            },
+            {
+                "type": "rule",
+                "selector": "^--"
             }
         ]
     }

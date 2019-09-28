@@ -4,6 +4,6 @@ gulp/**/*.*
 src/libs/**/*.*
 src/sass/_lib/**/*.*
 src/sass/base/**/*.*
-src/sass/helpers/**/*.*
+src/sass/utils/**/*.*
 src/sass/generated/**/*.*
 src/sass/custom/*.*

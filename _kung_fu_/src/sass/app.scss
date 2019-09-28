@@ -3,9 +3,9 @@
 @import 'base/all';
 
 //Libs
-@import '../../node_modules/nouislider/distribute/nouislider';
-@import '../../node_modules/swiper/dist/css/swiper.min';
-@import '_lib/bootstrap-modal';
+// @import '../../node_modules/nouislider/distribute/nouislider';
+// @import '../../node_modules/swiper/dist/css/swiper.min';
+// @import '_lib/bootstrap-modal';
 // @import '_lib/slick-theme';
 // @import '_lib/slick';
 
@@ -16,13 +16,13 @@
 @import 'components/buttons';
 
 //Import main styles
-@import 'main';
+@import 'common';
 
 //Import site layouts
 @import 'layout/footer';
-@import 'layout/form';
 @import 'layout/header';
 @import 'layout/menu';
+@import 'layout/form';
 @import 'layout/popup';
 
 //Import pages

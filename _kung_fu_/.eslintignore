@@ -1,4 +1,5 @@
 /build/**
+/public/**
 /app/**
 /dist/**
 /coverage/**
