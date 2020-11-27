@@ -12,8 +12,6 @@ App.Components = (function() {
         _initDropdown();
         _initAccordeon();
         _initCheckbox();
-        _initTabs();
-        _initStickyBlock();
         _initPushUp();
         _btnAnimate();
         App.Components.Input.init();
@@ -30,34 +28,6 @@ App.Components = (function() {
     function _initCheckbox() {
         new CheckBox({ selector: '.js-c-checkbox' });
         new Radio({ selector: '.js-c-radio' });
-    }
-
-    function _initTabs() {
-        let $tabs = $('.js-tab');
-        if ($tabs.length) {
-            $('.js-tab').tabs();
-        }
-    }
-
-    function _initStickyBlock() {
-        let stickyBlock = '[data-sticky]';
-        let $stickyBlock = $(stickyBlock);
-        let stickyBlockContainer = '[data-sticky-container]';
-        let stickyBlockInner = '[data-sticky-inner]';
-        let maxWindowWidth = $stickyBlock.data('sticky-width') || 767;
-        let stickyBlockTopSpasing =
-            $stickyBlock.data('sticky-top-spacing') || 10;
-        let stickyBlockBottomSpasing =
-            $stickyBlock.data('sticky-bottom-spacing') || 10;
-
-        if ($stickyBlock.length && $(window).width() > maxWindowWidth) {
-            new StickySidebar(stickyBlock, {
-                topSpacing: stickyBlockTopSpasing,
-                bottomSpacing: stickyBlockBottomSpasing,
-                containerSelector: stickyBlockContainer,
-                innerWrapperSelector: stickyBlockInner,
-            });
-        }
     }
 
     function _initPushUp() {
@@ -115,8 +85,6 @@ App.Components = (function() {
         initDropdown: _initDropdown,
         initAccordeon: _initAccordeon,
         initCheckbox: _initCheckbox,
-        initTabs: _initTabs,
-        initStickyBlock: _initStickyBlock,
         initPushUp: _initPushUp,
         btnAnimate: _btnAnimate,
     };

@@ -1,11 +1,10 @@
-const config = require('./config/config');
+const config = require('./gulp/config');
 const path = require('path');
 const fs = require('fs');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { VueLoaderPlugin } = require('vue-loader');
 const { UnusedFilesWebpackPlugin } = require('unused-files-webpack-plugin');
 const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
@@ -213,7 +212,6 @@ function createConfig(env) {
             new webpack.NoEmitOnErrorsPlugin(),
             new UnusedFilesWebpackPlugin(),
             new DuplicatePackageCheckerPlugin(),
-            new VueLoaderPlugin(),
 
             new webpack.LoaderOptionsPlugin({
                 options: {

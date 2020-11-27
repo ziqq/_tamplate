@@ -1,50 +1,56 @@
-var config = require('../config');
-var smartgrid = require('smart-grid');
+const config = require('../../config');
+const gulp = require('gulp');
+const smartgrid = require('smart-grid');
 
 /* It's principal settings in smart grid project */
-var settings = {
+const settings = {
     outputStyle: 'scss' /* less || scss || sass || styl */,
     columns: 12 /* number of grid columns */,
     offset: '20px' /* gutter width px || % */,
     mobileFirst: false /* mobileFirst ? 'min-width' : 'max-width' */,
     container: {
         maxWidth: '1200px' /* max-width оn very large screen */,
-        fields: '20px' /* side fields */
+        fields: '20px' /* side fields */,
     },
     filename: '_smart-grid',
     breakPoints: {
         lg: {
-            width: '1366px' /* -> @media (max-width: 1100px) */
+            width: '1366px' /* -> @media (max-width: 1100px) */,
+        },
+        mdX: {
+            width: '1280px',
+            // fields: '15px' /* set fields only if you want to change container.fields */
         },
         md: {
-            width: '1024px'
+            width: '1024px',
             // fields: '15px' /* set fields only if you want to change container.fields */
         },
         sm: {
-            width: '768px'
+            width: '768px',
         },
         xs: {
-            width: '480px'
+            width: '480px',
         },
         i8: {
-            width: '414px'
+            width: '414px',
         },
         i7: {
-            width: '375px'
+            width: '375px',
         },
         i5: {
-            width: '320px'
-        }
+            width: '320px',
+        },
         /*
         We can create any quantity of break points.
-
         some_name: {
             width: 'Npx',
             fields: 'N(px|%|rem)',
             offset: 'N(px|%|rem)'
         }
         */
-    }
+    },
 };
 
-smartgrid(config.src.sassGen, settings);
+gulp.task('grid', function() {
+    smartgrid(config.src.sassGen, settings);
+});

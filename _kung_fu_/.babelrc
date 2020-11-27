@@ -5,11 +5,17 @@
             "env",
             {
                 "targets": {
-                    "browsers": ["last 3 versions"]
-                },
-                "modules": false
+                    "browsers": ["last 4 versions"]
+                }
             }
         ]
     ],
+    "parserOpts": {
+        "plugins": [
+            "transform-object-rest-spread",
+            "transform-es2015-spread",
+            "transform-es2015-destructuring"
+        ]
+    },
     "ignore": ["node_modules"]
 }

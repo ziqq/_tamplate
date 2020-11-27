@@ -4,15 +4,6 @@
  * @author Anton Ustinoff <a.a.ustinoff@gmail.com>
  */
 
-//Global Vars
-const $window = $(window);
-const $document = $(document);
-const $html = $('html');
-const $wrapper = $('.wrapper');
-const $header = $('.header');
-const $main = $('.main');
-const $overlay = $('.js-overlay');
-
 const App = {
     init() {
         console.log('Site init');
@@ -40,9 +31,6 @@ App.define = function(namespace) {
     }
     return parent;
 };
-
-//=include partials/Components.js
-//=include partials/Utils.js
 
 $(function() {
     App.init();

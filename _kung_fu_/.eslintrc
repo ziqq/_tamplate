@@ -1,5 +1,12 @@
 {
+    "env": {
+        "es6": true,
+        "node": true,
+        "browser": true,
+        "jquery": true
+    },
     "extends": ["prettier"],
+    "parser": "babel-eslint",
     "parserOptions": {
         "sourceType": "module",
         "ecmaVersion": 6,
@@ -7,20 +14,11 @@
             "jsx": true
         }
     },
-
-    "env": {
-        "es6": true,
-        "node": true,
-        "browser": true
-    },
+    "plugins": ["prettier", "dollar-sign"],
     "rules": {
-        "jsx-quotes": [
-            1,
-            "prefer-double"
-        ]
-    },
-    "plugins": [
-        "prettier"
-    ]
-
+        "dollar-sign/dollar-sign": [2, "ignoreProperties"],
+        "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
+        "no-unused-vars": 1,
+        "jsx-quotes": [1, "prefer-double"]
+    }
 }
